@@ -1,0 +1,35 @@
+﻿
+VC_V142_X64 {
+    // do what is neccesary to generate the environment.
+    .GetEnvironmentFromBatchFile {
+      BatchFile="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvarsall.bat";
+      Parameters="amd64";
+    };
+};
+
+VC_V142_WIN32 {
+    .SetEnvironmentFromTarget.Target = "VC_V142_X86";
+    .Error.Condition = !$(IsEnvironmentValid);
+};
+
+VC_V142_AMD64 {
+    .SetEnvironmentFromTarget.Target = "VC_V142_X64";
+    .Error.Condition = !$(IsEnvironmentValid);
+};
+
+VC_V142_X86 {
+    // do what is neccesary to generate the environment.
+    .GetEnvironmentFromBatchFile {
+      BatchFile="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvarsall.bat";
+      Parameters="x86";
+    };
+};
+
+
+VC_V142_ARM {
+    // do what is neccesary to generate the environment.
+    .GetEnvironmentFromBatchFile {
+      BatchFile="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvarsall.bat";
+      Parameters="x64_arm";
+    };
+};

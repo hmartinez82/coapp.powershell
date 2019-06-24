@@ -185,6 +185,9 @@
     <None Include="etc\vc12.toolinfo">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="etc\vc14.toolinfo" />
+    <None Include="etc\vc141.toolinfo" />
+    <None Include="etc\vc142.toolinfo" />
     <None Include="SigningService.psm1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
