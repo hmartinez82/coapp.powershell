@@ -11,23 +11,24 @@
 
 /*********************************** Module Header ***********************************\
 * Copyright (c) Microsoft Corporation.
-*  
+*
 *  Original Source : http://1code.codeplex.com/
-*  
-* User Account Control (UAC) is a new security component in Windows Vista and newer 
-* operating systems. With UAC fully enabled, interactive administrators normally run 
-* with least user privileges. This example demonstrates how to check the privilege 
-* level of the current process, and how to self-elevate the process by giving explicit 
-* consent with the Consent UI. 
-* 
+*
+* User Account Control (UAC) is a new security component in Windows Vista and newer
+* operating systems. With UAC fully enabled, interactive administrators normally run
+* with least user privileges. This example demonstrates how to check the privilege
+* level of the current process, and how to self-elevate the process by giving explicit
+* consent with the Consent UI.
+*
 * This source is subject to the Microsoft Public License.
 * See http://www.microsoft.com/opensource/licenses.mspx#Ms-PL.
 * All other rights reserved.
-* 
-* THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER 
-* EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF 
+*
+* THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
+* EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF
 * MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
 \*************************************************************************************/
+
 
 namespace ClrPlus.Platform {
     using System;
@@ -74,12 +75,12 @@ namespace ClrPlus.Platform {
                     throw new Win32Exception(Marshal.GetLastWin32Error());
                 }
 
-                // Determine whether system is running Windows Vista or later operating 
-                // systems (major version >= 6) because they support linked tokens, but 
+                // Determine whether system is running Windows Vista or later operating
+                // systems (major version >= 6) because they support linked tokens, but
                 // previous versions (major version < 6) do not.
                 if (Environment.OSVersion.Version.Major >= 6) {
-                    // Running Windows Vista or later (major version >= 6). 
-                    // Determine token type: limited, elevated, or default. 
+                    // Running Windows Vista or later (major version >= 6).
+                    // Determine token type: limited, elevated, or default.
 
                     // Allocate a buffer for the elevation type information.
                     //cbSize = sizeof(TOKEN_ELEVATION_TYPE); // TODO: is this ok?
@@ -117,9 +118,9 @@ namespace ClrPlus.Platform {
                     }
                 }
 
-                // CheckTokenMembership requires an impersonation token. If we just got 
-                // a linked token, it already is an impersonation token.  If we did not 
-                // get a linked token, duplicate the original into an impersonation 
+                // CheckTokenMembership requires an impersonation token. If we just got
+                // a linked token, it already is an impersonation token.  If we did not
+                // get a linked token, duplicate the original into an impersonation
                 // token for CheckTokenMembership.
                 if (hTokenToCheck == null) {
                     if (!Advapi32.DuplicateToken(hToken, SecurityImpersonationLevel.SecurityIdentification, out hTokenToCheck)) {
@@ -132,7 +133,7 @@ namespace ClrPlus.Platform {
                 var principal = new WindowsPrincipal(id);
                 fInAdminGroup = principal.IsInRole(WindowsBuiltInRole.Administrator);
             } finally {
-                // Centralized cleanup for all allocated resources. 
+                // Centralized cleanup for all allocated resources.
                 if (hToken != null) {
                     hToken.Close();
                     hToken = null;
@@ -180,7 +181,7 @@ namespace ClrPlus.Platform {
                 }
                 */
 
-                // instead of using a the process' token, get it from the 
+                // instead of using a the process' token, get it from the
                 // current user. Dumbass.
                 hToken = WindowsIdentity.GetCurrent().Token;
 
@@ -193,9 +194,9 @@ namespace ClrPlus.Platform {
 
                 // Retrieve token elevation information.
                 if (!Advapi32.GetTokenInformation(hToken, TokenInformationClass.TokenElevation, pTokenElevation, cbTokenElevation, out cbTokenElevation)) {
-                    // When the process is run on operating systems prior to Windows 
-                    // Vista, GetTokenInformation returns false with the error code 
-                    // ERROR_INVALID_PIsProcessElevatedARAMETER because TokenElevation is not supported 
+                    // When the process is run on operating systems prior to Windows
+                    // Vista, GetTokenInformation returns false with the error code
+                    // ERROR_INVALID_PIsProcessElevatedARAMETER because TokenElevation is not supported
                     // on those operating systems.
                     throw new Win32Exception(Marshal.GetLastWin32Error());
                 }
@@ -203,13 +204,13 @@ namespace ClrPlus.Platform {
                 // Marshal the TOKEN_ELEVATION struct from native to .NET object.
                 var elevation = (TokenElevation)Marshal.PtrToStructure(pTokenElevation, typeof (TokenElevation));
 
-                // TOKEN_ELEVATION.TokenIsElevated is a non-zero value if the token 
+                // TOKEN_ELEVATION.TokenIsElevated is a non-zero value if the token
                 // has elevated privileges; otherwise, a zero value.
                 fIsElevated = (elevation.TokenIsElevated != 0);
             } catch (Exception) {
                 return false;
             } finally {
-                // Centralized cleanup for all allocated resources. 
+                // Centralized cleanup for all allocated resources.
                 /* if (hToken != null) {
                     hToken.Close();
                     hToken = null;
@@ -245,17 +246,17 @@ namespace ClrPlus.Platform {
                     throw new Win32Exception(Marshal.GetLastWin32Error());
                 }
 
-                // Then we must query the size of the integrity level information 
-                // associated with the token. Note that we expect GetTokenInformation 
-                // to return false with the ERROR_INSUFFICIENT_BUFFER error code 
-                // because we've given it a null buffer. On exit cbTokenIL will tell 
+                // Then we must query the size of the integrity level information
+                // associated with the token. Note that we expect GetTokenInformation
+                // to return false with the ERROR_INSUFFICIENT_BUFFER error code
+                // because we've given it a null buffer. On exit cbTokenIL will tell
                 // the size of the group information.
                 if (!Advapi32.GetTokenInformation(hToken, TokenInformationClass.TokenIntegrityLevel, IntPtr.Zero, 0, out cbTokenIL)) {
                     var error = Marshal.GetLastWin32Error();
                     if (error != Advapi32.ERROR_INSUFFICIENT_BUFFER) {
-                        // When the process is run on operating systems prior to 
-                        // Windows Vista, GetTokenInformation returns false with the 
-                        // ERROR_INVALID_PARAMETER error code because 
+                        // When the process is run on operating systems prior to
+                        // Windows Vista, GetTokenInformation returns false with the
+                        // ERROR_INVALID_PARAMETER error code because
                         // TokenIntegrityLevel is not supported on those OS's.
                         throw new Win32Exception(error);
                     }
@@ -267,8 +268,8 @@ namespace ClrPlus.Platform {
                     throw new Win32Exception(Marshal.GetLastWin32Error());
                 }
 
-                // Now we ask for the integrity level information again. This may fail 
-                // if an administrator has added this account to an additional group 
+                // Now we ask for the integrity level information again. This may fail
+                // if an administrator has added this account to an additional group
                 // between our first call to GetTokenInformation and this one.
                 if (!Advapi32.GetTokenInformation(hToken, TokenInformationClass.TokenIntegrityLevel, pTokenIL, cbTokenIL, out cbTokenIL)) {
                     throw new Win32Exception(Marshal.GetLastWin32Error());
@@ -277,13 +278,13 @@ namespace ClrPlus.Platform {
                 // Marshal the TOKEN_MANDATORY_LABEL struct from native to .NET object.
                 var tokenIL = (TokenMandatoryLabel)Marshal.PtrToStructure(pTokenIL, typeof (TokenMandatoryLabel));
 
-                // Integrity Level SIDs are in the form of S-1-16-0xXXXX. (e.g. 
-                // S-1-16-0x1000 stands for low integrity level SID). There is one 
+                // Integrity Level SIDs are in the form of S-1-16-0xXXXX. (e.g.
+                // S-1-16-0x1000 stands for low integrity level SID). There is one
                 // and only one subauthority.
                 var pIL = Advapi32.GetSidSubAuthority(tokenIL.Label.Sid, 0);
                 IL = Marshal.ReadInt32(pIL);
             } finally {
-                // Centralized cleanup for all allocated resources. 
+                // Centralized cleanup for all allocated resources.
                 if (hToken != null) {
                     hToken.Close();
                     hToken = null;

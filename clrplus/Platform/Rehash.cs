@@ -1,19 +1,18 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright company="CoApp Project">
-//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors. 
+//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors.
 //     Contributors can be discovered using the 'git log' command.
 //     All rights reserved.
 // </copyright>
 // <license>
 //     The software is licensed under the Apache 2.0 License (the "License")
-//     You may not use the software except in compliance with the License. 
+//     You may not use the software except in compliance with the License.
 // </license>
 //-----------------------------------------------------------------------
 
 namespace ClrPlus.Platform {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Reflection;
@@ -60,7 +59,7 @@ namespace ClrPlus.Platform {
                                 continue;
                             }
                         }
-                        // hmm. This dont' look like the one that we want 
+                        // hmm. This dont' look like the one that we want
                         dllFilename.TryHardToDelete();
                     }
 
@@ -98,7 +97,7 @@ namespace ClrPlus.Platform {
         }
 
         private static ProcessorType GetProcessProcessorType(SafeProcessHandle processHandle) {
-            if (processHandle == SafeProcessHandle.InvalidHandle) {
+            if (processHandle.IsInvalid) {
                 return ProcessorType.Unknown;
             }
 

@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------
 // <copyright company="CoApp Project">
-//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors. 
+//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors.
 //     Contributors can be discovered using the 'git log' command.
 //     All rights reserved.
 // </copyright>
 // <license>
 //     The software is licensed under the Apache 2.0 License (the "License")
-//     You may not use the software except in compliance with the License. 
+//     You may not use the software except in compliance with the License.
 // </license>
 //-----------------------------------------------------------------------
 
@@ -66,21 +66,21 @@ namespace ClrPlus.Powershell.Azure.Provider {
                     // is the secret really a SAS token?
                     // Eric : this is the spot to use the token!
                     if (_isSas) {
-                        _account = new CloudStorageAccount(new StorageCredentials(Secret), _baseUri, null, null);
-                       
+                        _account = new CloudStorageAccount(new StorageCredentials(Secret), _baseUri.ToString(), null, true);
+
                         _blobStore = _account.CreateCloudBlobClient();
-                        
+
                         //get it to the right container and stuff
                       /*if (_blobStore == null)
                             throw new ClrPlusException("Couldn't get a CloudBlobClient for SasAccount {0} and SasContainer {1}".format(SasAccountUri, SasContainer));*/
                     } else {
-                        _account = new CloudStorageAccount(new StorageCredentials(_accountName, Secret), _baseUri, null, null);
-                       
+                        _account = new CloudStorageAccount(new StorageCredentials(_accountName, Secret), _baseUri.ToString(), null, true);
+
                         _blobStore = _account.CreateCloudBlobClient();
                        /* if (_blobStore == null)
                             throw new ClrPlusException("Couldn't get a CloudBlobClient for SasAccount {0} and SasContainer {1}".format(SasAccountUri, SasContainer));*/
                     }
-                    
+
                 }
                 return _blobStore;
             }
@@ -135,7 +135,7 @@ namespace ClrPlus.Powershell.Azure.Provider {
 
             if(psCredential == null || (psCredential.UserName == null && psCredential.Password == null)) {
                 psCredential = new PSCredential(account, aliasRule.HasProperty("secret") ? aliasRule["secret"].Value.ToSecureString() : null);
-            } 
+            }
 
             if (string.IsNullOrEmpty(container)) {
                 return new PSDriveInfo(name, providerInfo, @"{0}:\{1}\".format(ProviderScheme, account), ProviderDescription, psCredential);
@@ -177,7 +177,7 @@ namespace ClrPlus.Powershell.Azure.Provider {
 
                 //TODO Do I actually need to flip the slashes here? I'll do it to be safe for now
                 root = @"azure:\\{0}\{1}".format(sasUsernamePieces[0], containerUri.AbsolutePath.Replace('/', '\\'));
-                
+
                 SasAccountUri = "https://" + containerUri.Host;
                 SasContainer = containerUri.AbsolutePath;
 
@@ -197,19 +197,19 @@ namespace ClrPlus.Powershell.Azure.Provider {
             // if that fails, attempt to get it from the root.
                 // http://account.blob.core.windows.net ... guess the account, have the base uri
                 // https://account.blob.core.windows.net ... guess the account, have the base uri
-                
+
                 // azure://coapp ... -> guess the account, generate the baseuri
 
                 // http://downloads.coapp.org  user must supply account, have the base uri
                 // https://downloads.coapp.org user must supply account, have the base uri
                 // http://127.0.0.1:10000/     user must supply account, have the base uri
-            
+
             var parsedPath = Path.ParseWithContainer(root);
-            
-            
+
+
             //check if Credential is Sas
 
-               
+
             if (credential != null && credential.UserName != null && credential.Password != null) {
 
                 if (credential.UserName.Contains(SAS_GUID)) {
@@ -223,7 +223,7 @@ namespace ClrPlus.Powershell.Azure.Provider {
 
 
                 if(parsedPath.Scheme == ProviderScheme) {
-                    // generate the baseuri like they do 
+                    // generate the baseuri like they do
                     _baseUri = new Uri("https://{0}.blob.core.windows.net/".format(_accountName));
                 } else {
                     _baseUri = new Uri("{0}://{1}/".format(parsedPath.Scheme, parsedPath.HostAndPort));
@@ -243,13 +243,13 @@ namespace ClrPlus.Powershell.Azure.Provider {
                     // throw xxx
                 }
 
-                
+
             }
 
             Path = parsedPath;
-            
 
-           
+
+
 
             if (string.IsNullOrEmpty(parsedPath.HostAndPort) || string.IsNullOrEmpty(parsedPath.Scheme)) {
                 Path = parsedPath;
@@ -297,7 +297,7 @@ namespace ClrPlus.Powershell.Azure.Provider {
                 Secret = d.Secret;
                 return;
             }
-            
+
         }
 
         internal string ActualHostAndPort
@@ -330,5 +330,5 @@ namespace ClrPlus.Powershell.Azure.Provider {
 
         }
     }*/
- 
+
 }

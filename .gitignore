@@ -88,3 +88,5 @@ Scratch/test2.props
 /_unused_code.cs
 /mar25.txt
 .syncignore
+/.vs
+/clrplus/.vs/ClrPlus/v15/Server/sqlite3

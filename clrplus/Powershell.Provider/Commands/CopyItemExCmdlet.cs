@@ -1,12 +1,12 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright company="CoApp Project">
-//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors. 
+//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors.
 //     Contributors can be discovered using the 'git log' command.
 //     All rights reserved.
 // </copyright>
 // <license>
 //     The software is licensed under the Apache 2.0 License (the "License")
-//     You may not use the software except in compliance with the License. 
+//     You may not use the software except in compliance with the License.
 // </license>
 //-----------------------------------------------------------------------
 
@@ -42,7 +42,7 @@ namespace ClrPlus.Powershell.Provider.Commands {
         }
 
         private readonly CancellationTokenSource _cancellationToken = new CancellationTokenSource();
-        
+
 
         protected override void BeginProcessing() {
            // Console.WriteLine("===BeginProcessing()===");
@@ -59,13 +59,13 @@ namespace ClrPlus.Powershell.Provider.Commands {
 
         protected override void ProcessRecord() {
             ProviderInfo destinationProviderInfo;
-       
 
-          
+
+
 
             var destinationLocation = ResolveDestinationLocation(out destinationProviderInfo);
 
-           
+
 
 
             var sources = Path.Select(each => {
@@ -78,9 +78,9 @@ namespace ClrPlus.Powershell.Provider.Commands {
             }).ToArray();
 
 
-           
 
-           
+
+
 
             var providerInfos = sources.Select(each => each.ProviderInfo).Distinct().ToArray();
             if (providerInfos.Length == 1 && providerInfos[0] == destinationProviderInfo) {
@@ -90,11 +90,11 @@ namespace ClrPlus.Powershell.Provider.Commands {
             }
 
             bool force = Force;
-            
-           
-            
-   
-           
+
+
+
+
+
 
 
 
@@ -123,17 +123,17 @@ namespace ClrPlus.Powershell.Provider.Commands {
                 }
 
 
-                
+
                 using (var inputStream = new ProgressStream(operation.Source.Open(FileMode.Open))) {
                     using (var outputStream = new ProgressStream(operation.Destination.Open(FileMode.Create))) {
 
                         var inputLength = inputStream.Length;
-                      
+
                         inputStream.BytesRead += (sender, args) => {};
                         CopyOperation operation1 = operation;
                         outputStream.BytesWritten += (sender, args) => WriteProgress(CreateProgressRecord(2, "Copy",
                             "Copying '{0}' to '{1}'".format(operation1.Source.AbsolutePath, operation1.Destination.AbsolutePath), 100*(double)args.StreamPosition/inputLength, 1));
-                         
+
                         inputStream.CopyTo(outputStream, 32768);
 
                         /*
@@ -155,21 +155,21 @@ namespace ClrPlus.Powershell.Provider.Commands {
             WriteProgress(CreateCompletedProgressRecord(1, "Copy", "Copy finished"));
             s.Stop();
             WriteVerbose("Completed in {0}".format(s.Elapsed));
-           
+
         }
 
 
-       
+
 
         private ILocation ResolveDestinationLocation(out ProviderInfo destinationProviderInfo) {
-            
+
             try {
                 //if Destination doesn't exist, this will throw
                 var destination = SessionState.Path.GetResolvedProviderPathFromPSPath(Destination, out destinationProviderInfo);
                 var path = destination[0];
-                
+
                 return GetLocationResolver(destinationProviderInfo).GetLocation(path);
-                
+
             } catch (Exception) {
                 //the destination didn't exist, probably a file
                 var lastSlash = Destination.LastIndexOf('\\');
@@ -180,16 +180,16 @@ namespace ClrPlus.Powershell.Provider.Commands {
 
                 var path = destination[0];
                 path += hasASlash ? Destination.Substring(lastSlash) : @"\" + Destination;
-                
+
                 return GetLocationResolver(destinationProviderInfo).GetLocation(path);
             }
         }
 
-       
-        
 
 
-        
+
+
+
 
         private ProgressRecord CreateProgressRecord(int activityId, string activity, string statusDescription, double percentComplete, int parentActivityId = 0) {
             return new ProgressRecord(activityId, activity, statusDescription) {
@@ -242,10 +242,10 @@ namespace ClrPlus.Powershell.Provider.Commands {
         }
 
         protected override void StopProcessing() {
-          
+
             base.StopProcessing();
             _cancellationToken.Cancel();
-            
+
         }
     }
 }

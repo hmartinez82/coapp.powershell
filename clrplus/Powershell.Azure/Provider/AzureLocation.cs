@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------
 // <copyright company="CoApp Project">
-//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors. 
+//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors.
 //     Contributors can be discovered using the 'git log' command.
 //     All rights reserved.
 // </copyright>
 // <license>
 //     The software is licensed under the Apache 2.0 License (the "License")
-//     You may not use the software except in compliance with the License. 
+//     You may not use the software except in compliance with the License.
 // </license>
 //-----------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ namespace ClrPlus.Powershell.Azure.Provider {
                     } catch {
                     }
 
-                    // well, we know it's not a file, container, or account. 
+                    // well, we know it's not a file, container, or account.
                     // it could be a directory (but the only way to really know that is to see if there is any files that have this as a parent path)
                     var dirRef = CloudContainer.GetDirectoryReference(Path.SubPath);
                     if (dirRef.ListBlobs().Any()) {
@@ -350,7 +350,7 @@ namespace ClrPlus.Powershell.Azure.Provider {
             return (from blob in cloudBlobDirectory.ListBlobs().Select(each => each.Uri.AbsolutePath.Substring(l))
                 let i = blob.IndexOf('/')
                 where i > -1
-                select blob.Substring(0, i)).Distinct().Select(cloudBlobDirectory.GetSubdirectoryReference);
+                select blob.Substring(0, i)).Distinct().Select(cloudBlobDirectory.GetDirectoryReference);
         }
 
         public override IEnumerable<ILocation> GetFiles(bool recurse) {
@@ -438,7 +438,7 @@ namespace ClrPlus.Powershell.Azure.Provider {
 
             } else {
                 // new directory
-                
+
             }
             return null;
         }
@@ -457,12 +457,12 @@ namespace ClrPlus.Powershell.Azure.Provider {
 
                 var results = newContainer.ListBlobs().OfType<CloudBlockBlob>().Select(blob => {
                     var newBlob = newContainer.GetBlockBlobReference(Name);
-                    newBlob.StartCopyFromBlob(blob);
+                    newBlob.StartCopy(blob);
                     return newBlob;
                 }).ToList();
 
-                while (results.Count > 0) {
-                    for (var i = results.Count; i <= 0; i--) {
+                while (results.Count() > 0) {
+                    for (var i = results.Count(); i <= 0; i--) {
                         var blob = results[i];
 
                         switch (blob.CopyState.Status) {
@@ -491,9 +491,9 @@ namespace ClrPlus.Powershell.Azure.Provider {
                 // delete the old container.
                 _cloudContainer.DeleteIfExists();
             } else if (IsDirectory) {
-                
+
             } else if (IsFile) {
-                
+
             }
             throw new NotImplementedException();
         }

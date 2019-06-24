@@ -1,12 +1,12 @@
 ﻿// ----------------------------------------------------------------------
 // <copyright company="CoApp Project">
-//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors. 
+//     Copyright (c) 2010-2013 Garrett Serack and CoApp Contributors.
 //     Contributors can be discovered using the 'git log' command.
 //     All rights reserved.
 // </copyright>
 // <license>
 //     The software is licensed under the Apache 2.0 License (the "License")
-//     You may not use the software except in compliance with the License. 
+//     You may not use the software except in compliance with the License.
 // </license>
 //-----------------------------------------------------------------------
 
@@ -75,7 +75,7 @@ namespace ClrPlus.Scripting.MsBuild.Building {
                 _sheet.CurrentView.AddMacroHandler((name, context) => Environment.GetEnvironmentVariable(name));
                 // convert #product-info into a dictionary.
                 productInformation = _sheet.Metadata.Value.Keys.Where(each => each.StartsWith("product-info")).ToXDictionary(each => each.Substring(12), each => _sheet.Metadata.Value[each]);
-            } catch(Exception e) { 
+            } catch(Exception /*e*/) {
                 // e.PrintDump();
                 Dispose();
             }
@@ -88,7 +88,7 @@ namespace ClrPlus.Scripting.MsBuild.Building {
                 yield return "condition".MapTo<ProjectTargetElement>(tgt => tgt.Condition());
                 yield return "*".MapTo<ProjectTargetElement>(tgt => tgt.Condition());
 
-                yield return "$$INDEXED".MapIndexedChildrenTo<ProjectTargetElement>((tgt, child) => tgt.GetTargetItem(child)); // .tasks 
+                yield return "$$INDEXED".MapIndexedChildrenTo<ProjectTargetElement>((tgt, child) => tgt.GetTargetItem(child)); // .tasks
             }
         }
 
@@ -157,12 +157,12 @@ namespace ClrPlus.Scripting.MsBuild.Building {
 
         private readonly ConcurrentQueue<BuildMessage> messages = new ConcurrentQueue<BuildMessage>();
 
-        
+
         public bool Execute(string[] targets = null) {
             _sheet.CopyToModel();
 
             targets = targets ?? new string[0];
-            
+
 
             var path = Save();
             var result = true;
@@ -191,9 +191,9 @@ namespace ClrPlus.Scripting.MsBuild.Building {
                         });
 
                 while (!proc.HasExited) {
-                    // check our messages -- we need to work on the calling thread. 
-                    // Thanks powershell, I appreciate working like it's 1989 again. 
-                    Thread.Sleep(20); // not so tight of loop. 
+                    // check our messages -- we need to work on the calling thread.
+                    // Thanks powershell, I appreciate working like it's 1989 again.
+                    Thread.Sleep(20); // not so tight of loop.
 
                         while (messages.Any()) {
                         BuildMessage obj;
