@@ -23,7 +23,7 @@
           <Directory Id="INSTALLFOLDER" Name="Modules">
             <Directory Id="CoApp" Name="CoApp">
               <Directory Id="etc" Name="etc" />
-                
+
             </Directory>
           </Directory>
         </Directory>
@@ -33,12 +33,12 @@
     <ComponentGroup Id="CoApp" Directory="CoApp">
       <Component Id="CoApp" Guid="FBD01CDC-605E-4E78-AC8E-C97913C31000">
         <Environment Id="PSModuleInfo" Action="set" Part="first" Name="PSModulePath" System="yes" Value="[INSTALLFOLDER]"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\SigningService.psm1"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\CoApp.Powershell.Tools.dll" />
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\CoApp.Powershell.Tools.dll-help.xml" />
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\CoApp.psd1"/>
-        
-        
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\SigningService.psm1"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\CoApp.Powershell.Tools.dll" />
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\CoApp.Powershell.Tools.dll-help.xml" />
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\CoApp.psd1"/>
+
+
         <RegistryValue Root="HKLM" Key="Software\Outercurve\CoApp.Powershell\etc" Value="[INSTALLFOLDER]CoApp\etc/" Type="string" Action="write" />
       </Component>
 
@@ -48,31 +48,31 @@
       </Component>
 
     </ComponentGroup>
-    
+
     <ComponentGroup Id="etc" Directory="etc">
       <Component Id="etc" Guid="FBD01CDC-605E-1234-AC8E-C97913C31000">
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\nuget.exe"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\MSBuild.ExtensionPack.tasks"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\vc10.toolinfo"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\vc11.toolinfo"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\vc12.toolinfo"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\default_tools"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\vcxproj.inc"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\common-header.vcxproj"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\common-footer.vcxproj"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\common-variables.vcxproj"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\common-overrides.vcxproj"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\template-project.vcxproj"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\buildinfo-template"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\nuget-overlay.cmd"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\Pivots.properties"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\PackageScriptTemplate.autopkg"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\PackageScriptTemplate_ltcg.autopkg"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\PackageScriptTemplate_static.autopkg"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\nuget.exe"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\MSBuild.ExtensionPack.tasks"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\vc10.toolinfo"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\vc11.toolinfo"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\vc12.toolinfo"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\default_tools"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\vcxproj.inc"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\common-header.vcxproj"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\common-footer.vcxproj"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\common-variables.vcxproj"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\common-overrides.vcxproj"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\template-project.vcxproj"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\buildinfo-template"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\nuget-overlay.cmd"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\Pivots.properties"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\PackageScriptTemplate.autopkg"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\PackageScriptTemplate_ltcg.autopkg"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\PackageScriptTemplate_static.autopkg"/>
 
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\CoApp.NuGetNativeMSBuildTasks.dll"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\CoApp.NuGetNativeMSBuildTasks.dll.orig"/>
-        <File Source="$(env.SolutionDir)\output\v40\AnyCPU\$(env.Configuration)\bin\etc\CoApp.NuGetNativeExtensions.dll"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\CoApp.NuGetNativeMSBuildTasks.dll"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\CoApp.NuGetNativeMSBuildTasks.dll.orig"/>
+        <File Source="$(env.SolutionDir)\output\v472\AnyCPU\$(env.Configuration)\bin\etc\CoApp.NuGetNativeExtensions.dll"/>
       </Component>
     </ComponentGroup>
 
