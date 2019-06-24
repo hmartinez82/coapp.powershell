@@ -40,6 +40,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSharpTest.Net.RpcLibrary, Version=14.327.1832.1051, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
