@@ -1,39 +1,39 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>ClrPlus.Remoting</id>
-    <version>2.4.501.0</version>
-    <title>CLRPlus Remoting Library</title>
-    <authors>Garrett Serack</authors>
-    <owners>Garrett Serack</owners>
-    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
-    <projectUrl>http://perpetual-motion.com/ClrPlus</projectUrl>
-    <iconUrl>http://coapp.org/images/logo-small.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>A library containing classes for doing a form of remoting over named pipes</summary>
-    <description>A library containing classes for doing a form of remoting over named pipes
+	<id>ClrPlus.Remoting</id>
+	<version>2.4.514.0</version>
+	<title>CLRPlus Remoting Library</title>
+	<authors>Garrett Serack</authors>
+	<owners>Garrett Serack</owners>
+	<licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+	<projectUrl>http://perpetual-motion.com/ClrPlus</projectUrl>
+	<iconUrl>http://coapp.org/images/logo-small.png</iconUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>A library containing classes for doing a form of remoting over named pipes</summary>
+	<description>A library containing classes for doing a form of remoting over named pipes
 
 [Note: This library is not quite ready for public consumption--I'm in the middle of some code reorganization]
 </description>
-    <releaseNotes>Initial Build of the new ClrPlus Remoting package.</releaseNotes>
-    <copyright>Copyright 2012</copyright>
-    <tags>ClrPlus CoApp Remoting NamedPipes</tags>
-    <dependencies>
-        <group targetFramework="net45">
-            <dependency  id="ClrPlus.Core" version="2.4.501.0" />
-        </group>
-        <group targetFramework="net40">
-            <dependency  id="ClrPlus.Core" version="2.4.501.0" />
+	<releaseNotes>Initial Build of the new ClrPlus Remoting package.</releaseNotes>
+	<copyright>Copyright 2012</copyright>
+	<tags>ClrPlus CoApp Remoting NamedPipes</tags>
+	<dependencies>
+		<group targetFramework="net45">
+			<dependency  id="ClrPlus.Core" version="2.4.514.0" />
+		</group>
+		<group targetFramework="net40">
+			<dependency  id="ClrPlus.Core" version="2.4.514.0" />
 			<dependency id="Microsoft.Bcl" version="1.1.6" />
 			<dependency id="Microsoft.Bcl.Async" version="1.0.165" />
 			<dependency id="Microsoft.Bcl.Build" version="1.0.13" />
-        </group>        
-    </dependencies>
+		</group>
+	</dependencies>
   </metadata>
   <files>
-    <file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Remoting.dll" target="lib\net40" /> 
-    <file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Remoting.xml" target="lib\net40" /> 
-    <file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Remoting.dll" target="lib\net45" /> 
-    <file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Remoting.xml" target="lib\net45" /> 
+	<file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Remoting.dll" target="lib\net40" />
+	<file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Remoting.xml" target="lib\net40" />
+	<file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Remoting.dll" target="lib\net45" />
+	<file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Remoting.xml" target="lib\net45" />
 </files>
 </package>

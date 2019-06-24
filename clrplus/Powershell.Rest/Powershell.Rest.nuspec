@@ -1,46 +1,46 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>ClrPlus.Powershell.Rest</id>
-    <version>2.4.501.0</version>
-    <title>CLRPlus Powershell REST Library</title>
-    <authors>Garrett Serack</authors>
-    <owners>Garrett Serack</owners>
-    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
-    <projectUrl>http://perpetual-motion.com/ClrPlus</projectUrl>
-    <iconUrl>http://coapp.org/images/logo-small.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>A library containing classes for working with powershell.</summary>
-    <description>A library containing classes creating RESTable cmdlets (so you can host cmdlets via a REST service and call them either remotely or locally)
+	<id>ClrPlus.Powershell.Rest</id>
+	<version>2.4.514.0</version>
+	<title>CLRPlus Powershell REST Library</title>
+	<authors>Garrett Serack</authors>
+	<owners>Garrett Serack</owners>
+	<licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+	<projectUrl>http://perpetual-motion.com/ClrPlus</projectUrl>
+	<iconUrl>http://coapp.org/images/logo-small.png</iconUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>A library containing classes for working with powershell.</summary>
+	<description>A library containing classes creating RESTable cmdlets (so you can host cmdlets via a REST service and call them either remotely or locally)
 
 [Note: This library is not quite ready for public consumption--I'm in the middle of some code reorganization]
-    </description>
-    <releaseNotes>Initial Build of the new ClrPlus Powershell.Rest package.</releaseNotes>
-    <copyright>Copyright 2012</copyright>
-    <tags>ClrPlus CoApp Powershell REST</tags>
-    <dependencies>
-        <group targetFramework="net45">
-            <dependency  id="ClrPlus.Core" version="2.4.501.0" />
-            <dependency  id="ClrPlus.Scripting" version="2.4.501.0" />
-            <dependency  id="ClrPlus.Powershell.Core" version="2.4.501.0" />
-            <dependency  id="ServiceStack" version="3.9.32" />
-        </group>
-        <group targetFramework="net40">
-            <dependency  id="ClrPlus.Core" version="2.4.501.0" />
-            <dependency  id="ClrPlus.Scripting" version="2.4.501.0" />
-            <dependency  id="ClrPlus.Powershell.Core" version="2.4.501.0" />
-            <dependency  id="ServiceStack" version="3.9.32" />
+	</description>
+	<releaseNotes>Initial Build of the new ClrPlus Powershell.Rest package.</releaseNotes>
+	<copyright>Copyright 2012</copyright>
+	<tags>ClrPlus CoApp Powershell REST</tags>
+	<dependencies>
+		<group targetFramework="net45">
+			<dependency  id="ClrPlus.Core" version="2.4.514.0" />
+			<dependency  id="ClrPlus.Scripting" version="2.4.514.0" />
+			<dependency  id="ClrPlus.Powershell.Core" version="2.4.514.0" />
+			<dependency  id="ServiceStack" version="3.9.32" />
+		</group>
+		<group targetFramework="net40">
+			<dependency  id="ClrPlus.Core" version="2.4.514.0" />
+			<dependency  id="ClrPlus.Scripting" version="2.4.514.0" />
+			<dependency  id="ClrPlus.Powershell.Core" version="2.4.514.0" />
+			<dependency  id="ServiceStack" version="3.9.32" />
 			<dependency id="Microsoft.Bcl" version="1.1.6" />
 			<dependency id="Microsoft.Bcl.Async" version="1.0.165" />
 			<dependency id="Microsoft.Bcl.Build" version="1.0.13" />
-        </group>
-    </dependencies>
-    
+		</group>
+	</dependencies>
+
   </metadata>
   <files>
-    <file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Powershell.Rest.dll" target="lib\net40" /> 
-    <file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Powershell.Rest.xml" target="lib\net40" /> 
-    <file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Powershell.Rest.dll" target="lib\net45" /> 
-    <file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Powershell.Rest.xml" target="lib\net45" /> 
+	<file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Powershell.Rest.dll" target="lib\net40" />
+	<file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Powershell.Rest.xml" target="lib\net40" />
+	<file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Powershell.Rest.dll" target="lib\net45" />
+	<file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Powershell.Rest.xml" target="lib\net45" />
 </files>
 </package>

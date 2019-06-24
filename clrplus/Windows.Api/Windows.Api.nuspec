@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>ClrPlus.Windows.Api</id>
-    <version>2.4.501.0</version>
-    <title>CLRPlus Windows.Api Library</title>
-    <authors>Garrett Serack</authors>
-    <owners>Garrett Serack</owners>
-    <licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
-    <projectUrl>http://perpetual-motion.com/ClrPlus</projectUrl>
-    <iconUrl>http://coapp.org/images/logo-small.png</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <summary>A library containing native wrappers from a bunch of Windows API dlls</summary>
-    <description>A library containing native wrappers from a bunch of Windows API dlls:
+	<id>ClrPlus.Windows.Api</id>
+	<version>2.4.514.0</version>
+	<title>CLRPlus Windows.Api Library</title>
+	<authors>Garrett Serack</authors>
+	<owners>Garrett Serack</owners>
+	<licenseUrl>http://opensource.org/licenses/Apache-2.0</licenseUrl>
+	<projectUrl>http://perpetual-motion.com/ClrPlus</projectUrl>
+	<iconUrl>http://coapp.org/images/logo-small.png</iconUrl>
+	<requireLicenseAcceptance>false</requireLicenseAcceptance>
+	<summary>A library containing native wrappers from a bunch of Windows API dlls</summary>
+	<description>A library containing native wrappers from a bunch of Windows API dlls:
 Advapi32
 CryptUi
 Gdi32
@@ -28,25 +28,25 @@ WinTrust
 It's not all perfect yet, and far from completely implemented, but a ton of stuff in there.
 
 [Note: This library is not quite ready for public consumption--I'm in the middle of some code reorganization]
-    
-    .</description>
-    <releaseNotes>Initial Build of the new ClrPlus Windows.Api package.</releaseNotes>
-    <copyright>Copyright 2012</copyright>
-    <tags>ClrPlus CoApp Win32 API Native</tags>
-    
-    <dependencies>
-        <group targetFramework="net40">
+
+	.</description>
+	<releaseNotes>Initial Build of the new ClrPlus Windows.Api package.</releaseNotes>
+	<copyright>Copyright 2012</copyright>
+	<tags>ClrPlus CoApp Win32 API Native</tags>
+
+	<dependencies>
+		<group targetFramework="net40">
 			<dependency id="Microsoft.Bcl" version="1.1.6" />
 			<dependency id="Microsoft.Bcl.Async" version="1.0.165" />
 			<dependency id="Microsoft.Bcl.Build" version="1.0.13" />
-        </group>
-    </dependencies>
-    
+		</group>
+	</dependencies>
+
   </metadata>
   <files>
-    <file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Windows.Api.dll" target="lib\net40" /> 
-    <file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Windows.Api.xml" target="lib\net40" /> 
-    <file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Windows.Api.dll" target="lib\net45" /> 
-    <file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Windows.Api.xml" target="lib\net45" /> 
+	<file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Windows.Api.dll" target="lib\net40" />
+	<file src="..\..\output\v40\AnyCPU\Release\bin\ClrPlus.Windows.Api.xml" target="lib\net40" />
+	<file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Windows.Api.dll" target="lib\net45" />
+	<file src="..\..\output\v45\AnyCPU\Release\bin\ClrPlus.Windows.Api.xml" target="lib\net45" />
 </files>
 </package>
