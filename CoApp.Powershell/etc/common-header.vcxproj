@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" InitialTargets="InitPTK" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" InitialTargets="InitPTK" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildProjectDirectory)\$(MSBuildProjectName).guid" Condition="Exists('$(MSBuildProjectDirectory)\$(MSBuildProjectName).guid')" />
   <Import Project="$(CoAppEtcDirectory)MSBuild.ExtensionPack.tasks" />
   <Import Project="$(MSBuildProjectDirectory)\dependencies.props" Condition="exists('$(MSBuildProjectDirectory)\dependencies.props')"/>
