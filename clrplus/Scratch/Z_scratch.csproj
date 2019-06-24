@@ -94,7 +94,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="template.autopkg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
