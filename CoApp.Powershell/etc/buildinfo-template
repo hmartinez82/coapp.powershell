@@ -3,7 +3,7 @@
 #define {
     ProjectName = "InsertProjectNameHere";
     ProjectFiles : {===PROJECTS===
-    }; 
+    };
 };
 
 default {
@@ -16,7 +16,7 @@ default {
             Projects=${ProjectFiles};
         };
     };
-    
+
     // wait for all threaded tasks to finish.
     .WaitForTasks { };
 };

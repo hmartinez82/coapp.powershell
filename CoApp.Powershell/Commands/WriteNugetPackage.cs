@@ -1,12 +1,12 @@
 ﻿//-----------------------------------------------------------------------
 // <copyright company="CoApp Project">
-//     Copyright (c) 2010-2012 Garrett Serack and CoApp Contributors. 
+//     Copyright (c) 2010-2012 Garrett Serack and CoApp Contributors.
 //     Contributors can be discovered using the 'git log' command.
 //     All rights reserved.
 // </copyright>
 // <license>
 //     The software is licensed under the Apache 2.0 License (the "License")
-//     You may not use the software except in compliance with the License. 
+//     You may not use the software except in compliance with the License.
 // </license>
 //-----------------------------------------------------------------------
 
@@ -15,7 +15,7 @@ namespace CoApp.Powershell.Commands {
     using System.Collections;
     using System.Collections.Generic;
     using System.IO;
-    using System.Linq;  
+    using System.Linq;
     using System.Management.Automation;
     using ClrPlus.Core.Extensions;
     using ClrPlus.Core.Utility;
@@ -27,7 +27,7 @@ namespace CoApp.Powershell.Commands {
 
     [Cmdlet(AllVerbs.Write, "NuGetPackage")]
     public class WriteNuGetPackage : BaseCmdlet {
-        
+
         static WriteNuGetPackage() {
             // ensure that the etc folder is added to the path.
             var x = CmdletUtility.EtcPath;
@@ -75,7 +75,7 @@ namespace CoApp.Powershell.Commands {
                 ProcessRecordViaRest();
                 return;
             }
-#endif 
+#endif
 
             ProviderInfo packagePathProviderInfo;
             var pkgPath = SessionState.Path.GetResolvedProviderPathFromPSPath(Package, out packagePathProviderInfo);

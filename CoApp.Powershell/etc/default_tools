@@ -1,7 +1,7 @@
 ﻿@import "Pivots.Properties";
 
 // These aliases point to the different default pivots that are supported
-// the alias name corresponds to the property name that gets set on the msbuild 
+// the alias name corresponds to the property name that gets set on the msbuild
 // line when used with the MsBuildEx Task.
 
 @alias PlatformToolset = ::configurations.Toolsets.choices;
@@ -26,12 +26,12 @@ package {
 
 publish {
      DependsOnTargets = package;
-    
+
     .Message.Text = "Pushing NuGet Packages to server using stored credentials.";
-    
+
     .NuGet.Push = "%(MainPackages.Identity)";
     .NuGet.Push = "%(OverlayPackages.Identity)";
-    
+
     .Message.Text = "Hiding Overlay Packages ...";
     .NuGet.Delete = "%(OverlayPackages.pkgIdentity)";
 

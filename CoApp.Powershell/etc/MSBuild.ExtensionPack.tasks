@@ -12,7 +12,7 @@
     <CoAppExtensionPackDll>Condition="Exists($(ExtensionTasksPath)/CoApp.Powershell.dll)">$(ExtensionTasksPath)/CoApp.Powershell.dll</CoAppExtensionPackDll>
   </PropertyGroup>
 
-  
+
   <!-- ============== Framework ============== -->
   <UsingTask AssemblyFile="$(MSBuildExtensionPackDll)" TaskName="MSBuild.ExtensionPack.CodeQuality.FxCop"/>
   <UsingTask AssemblyFile="$(MSBuildExtensionPackDll)" TaskName="MSBuild.ExtensionPack.CodeQuality.NUnit"/>
@@ -86,7 +86,7 @@
   <UsingTask AssemblyFile="$(MSBuildExtensionPackDll)" TaskName="MSBuild.ExtensionPack.Web.WebClient"/>
   <UsingTask AssemblyFile="$(MSBuildExtensionPackDll)" TaskName="MSBuild.ExtensionPack.Xml.XmlFile"/>
   <UsingTask AssemblyFile="$(MSBuildExtensionPackDll)" TaskName="MSBuild.ExtensionPack.Xml.XmlTask"/>
-  
+
   <UsingTask AssemblyFile="$(CoAppExtensionPackDll)" TaskName="ClrPlus.Scripting.MsBuild.Building.Tasks.ExecEx"/>
   <UsingTask AssemblyFile="$(CoAppExtensionPackDll)" TaskName="ClrPlus.Scripting.MsBuild.Building.Tasks.PushEnvironment"/>
   <UsingTask AssemblyFile="$(CoAppExtensionPackDll)" TaskName="ClrPlus.Scripting.MsBuild.Building.Tasks.PopEnvironment"/>
