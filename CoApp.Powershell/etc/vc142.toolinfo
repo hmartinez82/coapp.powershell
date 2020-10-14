@@ -33,3 +33,11 @@ VC_V142_ARM {
       Parameters="x64_arm";
     };
 };
+
+VC_V142_ARM64 {
+    // do what is neccesary to generate the environment.
+    .GetEnvironmentFromBatchFile {
+      BatchFile="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\VC\Auxiliary\Build\vcvarsall.bat";
+      Parameters="x64_arm64";
+    };
+};
